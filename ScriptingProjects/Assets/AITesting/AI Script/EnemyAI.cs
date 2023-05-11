@@ -8,19 +8,19 @@ public class EnemyAI : MonoBehaviour
 
     Transform player;
     public float enemySpeed, dis;
-    Vector3 StartPos;
+    Vector3 startPos;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        StartPos = transform.position;
+        startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         dis = Vector3.Distance(transform.position, player.position);
-        if(dis <= 8.0f)
+        if(dis <= 10.0f)
         {
             chase();
         }

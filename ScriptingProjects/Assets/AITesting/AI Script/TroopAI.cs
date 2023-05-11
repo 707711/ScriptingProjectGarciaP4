@@ -6,19 +6,21 @@ public class TroopAI : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float speed, dis;
+    public float playerSpeed, dis;
     Transform enemy;
+    Vector3 startPos;
 
     void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        //startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float moveZ = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float moveX = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
+        float moveZ = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
 
         transform.Translate(moveX, 0, moveZ);
 
@@ -30,9 +32,9 @@ public class TroopAI : MonoBehaviour
 
     }
 
-    //void chase()
-    //{
+    void chase()
+    {
         //transform.LookAt(enemy);
         //transform.Translate(0, 0, playerSpeed * Time.deltaTime);
-    //}
+    }
 }
