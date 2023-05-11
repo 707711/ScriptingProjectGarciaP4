@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -10,10 +11,21 @@ public class EnemyAI : MonoBehaviour
     public float enemySpeed, dis;
     Vector3 startPos;
 
+    private NavMeshAgent navMeshAgent;
+    private Transform movePositionTransform;
+
+    //public GameObject objective;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         startPos = transform.position;
+
+    }
+
+    private void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -24,6 +36,8 @@ public class EnemyAI : MonoBehaviour
         {
             chase();
         }
+
+        navMeshAgent.destination = movePositionTransform.position;
     }
 
     void chase()
